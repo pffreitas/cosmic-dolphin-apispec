@@ -1,0 +1,38 @@
+
+name: Publish TypeScript Client Library
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Compile TypeSpec
+        run: tsp compile
+
+      - name: Generate OpenAPI client library
+        run: |
+          npx @openapitools/openapi-generator-cli generate \
+            -i /path/to/openapi.yaml \
+            -g typescript-fetch \
+            -o /path/to/output/directory
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
