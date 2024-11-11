@@ -20,15 +20,17 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install
+        run: | 
+            npm install -g @typespec/compiler
+            tsp install
 
       - name: Compile TypeSpec
-        run: tsp compile
+        run: tsp compile .
 
       - name: Generate OpenAPI client library
         run: |
           npx @openapitools/openapi-generator-cli generate \
-            -i /path/to/openapi.yaml \
+            -i /tsp-output/@typespec/openapi3/openapi.yaml \
             -g typescript-fetch \
             -o /path/to/output/directory
 
