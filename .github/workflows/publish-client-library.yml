@@ -35,12 +35,10 @@ jobs:
             -o ./bin \
             --additional-properties=npmName="@pffreitas/cosmic-dolphin-apispec",npmVersion="1.0.0,supportsES6=true,typescriptThreePlus=true"
 
-      - name: Authenticate with GitHub Package Registry
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
-
       - name: Install and build
         run: |
           cd bin
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
           npm install
           npm run build
           npm publish
