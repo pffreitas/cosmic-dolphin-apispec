@@ -34,7 +34,9 @@ jobs:
             -i tsp-output/@typespec/openapi3/openapi.yaml \
             -g typescript-fetch \
             -o ./bin \
-            --additional-properties=npmName="@pffreitas/cosmic-dolphin-apispec",npmRepository="https://github.com/pffreitas/cosmic-dolphin-apispec.git,npmVersion=1.0.3,supportsES6=true,typescriptThreePlus=true"
+            --git-user-id=pffreitas \
+            --git-repo-id=cosmic-dolphin-apispec \
+            --additional-properties=npmName=@pffreitas/cosmic-dolphin-apispec,npmRepository=https://github.com/pffreitas/cosmic-dolphin-apispec.git,npmVersion=1.0.4,supportsES6=true,typescriptThreePlus=true
 
       - name: Install and build
         run: |
