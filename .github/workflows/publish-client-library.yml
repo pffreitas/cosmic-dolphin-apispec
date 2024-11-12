@@ -32,7 +32,7 @@ jobs:
           npx @openapitools/openapi-generator-cli generate \
             -i tsp-output/@typespec/openapi3/openapi.yaml \
             -g typescript-fetch \
-            -o ./bin
+            -o ./bin \
             --additional-properties=npmName="cosmic-dolphin-apispec",npmVersion="1.0.0,supportsES6=true,typescriptThreePlus=true"
 
       - name: Publish to npm
