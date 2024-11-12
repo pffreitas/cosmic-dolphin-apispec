@@ -36,13 +36,13 @@ jobs:
             -o ./bin \
             --git-user-id=pffreitas \
             --git-repo-id=cosmic-dolphin-apispec \
-            --additional-properties=npmName=@pffreitas/cosmic-dolphin-apispec,npmRepository=https://github.com/pffreitas/cosmic-dolphin-apispec.git,npmVersion=1.0.5,supportsES6=true,typescriptThreePlus=true
+            --additional-properties=npmName=@cosmic-dolphin/api,npmRepository=https://github.com/pffreitas/cosmic-dolphin-apispec.git,npmVersion=1.0.5,supportsES6=true,typescriptThreePlus=true
 
       - name: Install and build
         run: |
           cd bin
           npm install
           npm run build
-          npm publish --registry=https://npm.pkg.github.com
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
