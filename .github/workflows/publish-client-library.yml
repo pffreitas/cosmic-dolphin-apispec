@@ -32,7 +32,7 @@ jobs:
           npx @openapitools/openapi-generator-cli generate \
             -i tsp-output/@typespec/openapi3/openapi.yaml \
             -g typescript-fetch \
-            -o /path/to/output/directory
+            -o ./bin
 
       - name: Publish to npm
         run: npm publish

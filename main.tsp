@@ -34,7 +34,7 @@ model Note {
 }
 
 @error
-model Error {
+model ResponseError {
     code: int32;
     message: string;
 }
@@ -44,11 +44,11 @@ model Error {
 interface Notes {
     @useAuth(BearerAuth)
     @get
-    list(): Note[] | Error;
+    list(): Note[] | ResponseError;
 
     @useAuth(BearerAuth)
     @get
-    read(@path id: string): Note | Error;
+    read(@path id: string): Note | ResponseError;
 }
 
 @route("/insert-document")
