@@ -2,6 +2,10 @@
   "name": "cosmic-dolphin-apispec",
   "version": "0.1.0",
   "type": "module",
+  "scripts": { 
+    "compile": "tsp compile .",
+    "openapigen": "npx @openapitools/openapi-generator-cli generate -i tsp-output/@typespec/openapi3/openapi.yaml -g typescript-fetch -o ./bin --git-user-id=pffreitas --git-repo-id=cosmic-dolphin-apispec --additional-properties=npmName=@cosmic-dolphin/api,npmVersion=1.0.6,supportsES6=true,typescriptThreePlus=true"
+  },
   "peerDependencies": {
     "@typespec/compiler": "latest",
     "@typespec/http": "latest",

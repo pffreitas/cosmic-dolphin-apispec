@@ -36,7 +36,7 @@ jobs:
             -o ./bin \
             --git-user-id=pffreitas \
             --git-repo-id=cosmic-dolphin-apispec \
-            --additional-properties=npmName=@cosmic-dolphin/api,npmVersion=1.0.5,supportsES6=true,typescriptThreePlus=true
+            --additional-properties=npmName=@cosmic-dolphin/api,npmVersion=1.0.6,supportsES6=true,typescriptThreePlus=true
 
       - name: Install and build
         run: |

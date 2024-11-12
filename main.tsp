@@ -19,18 +19,22 @@ model NoteSection {
 }
 
 enum NoteSectionType {
-    text: "text";
+    text: "text",
 }
 
 model Note {
     id?: int64;
-    documentId: int64;
+    documentId?: int64;
     title: string;
     summary: string;
     tags: string;
     sections: NoteSection[];
     userId: string;
     createdAt: utcDateTime;
+}
+
+model CreateNoteRequest {
+    body: string;
 }
 
 @error
@@ -49,6 +53,12 @@ interface Notes {
     @useAuth(BearerAuth)
     @get
     read(@path id: string): Note | CosmicError;
+
+    @useAuth(BearerAuth)
+    @post
+    create(@body request: CreateNoteRequest): {
+        @statusCode statusCode: 201;
+    };
 }
 
 @route("/insert-document")
