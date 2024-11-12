@@ -33,9 +33,11 @@ jobs:
             -i tsp-output/@typespec/openapi3/openapi.yaml \
             -g typescript-fetch \
             -o ./bin \
-            --additional-properties=npmName="cosmic-dolphin-apispec",npmVersion="1.0.0,supportsES6=true,typescriptThreePlus=true"
+            --additional-properties=npmName="@pffreitas/cosmic-dolphin-apispec",npmVersion="1.0.0,supportsES6=true,typescriptThreePlus=true"
 
       - name: Publish to npm
-        run: npm publish
+        run: | 
+          npm publish
+          npm config set //npm.pkg.github.com/:_authToken=GH_TOKEN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
