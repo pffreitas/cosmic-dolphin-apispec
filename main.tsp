@@ -34,7 +34,7 @@ model Note {
 }
 
 @error
-model ResponseError {
+model CosmicError {
     code: int32;
     message: string;
 }
@@ -44,11 +44,11 @@ model ResponseError {
 interface Notes {
     @useAuth(BearerAuth)
     @get
-    list(): Note[] | ResponseError;
+    list(): Note[] | CosmicError;
 
     @useAuth(BearerAuth)
     @get
-    read(@path id: string): Note | ResponseError;
+    read(@path id: string): Note | CosmicError;
 }
 
 @route("/insert-document")
