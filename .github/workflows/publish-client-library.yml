@@ -37,7 +37,8 @@ jobs:
 
       - name: Publish to npm
         run: | 
-          npm config set //npm.pkg.github.com/:_authToken=GH_TOKEN  
+          npm config set //npm.pkg.github.com/:_authToken=GH_TOKEN
+          npm pkg fix  
           npm publish --registry=https://npm.pkg.github.com
           
         env:
