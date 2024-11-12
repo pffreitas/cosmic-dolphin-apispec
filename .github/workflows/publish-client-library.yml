@@ -41,7 +41,6 @@ jobs:
           cd bin
           npm install
           npm run build
-          npm login
           npm publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
