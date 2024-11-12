@@ -39,6 +39,7 @@ jobs:
       - name: Install and build
         run: |
           cd bin
+          echo $NODE_AUTH_TOKEN
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
           npm install
           npm run build
