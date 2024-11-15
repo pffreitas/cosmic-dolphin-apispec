@@ -18,6 +18,11 @@ model NoteSection {
     content: Record<string>;
 }
 
+enum NoteType {
+    fup: "fup",
+    textReview: "textReview",
+}
+
 enum NoteSectionType {
     text: "text",
 }
@@ -35,6 +40,7 @@ model Note {
 
 model CreateNoteRequest {
     body: string;
+    type: NoteType;
 }
 
 @error
