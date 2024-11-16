@@ -48,5 +48,4 @@ jobs:
           /bin/sh ./git_push.sh pffreitas cosmic-dolphin-api-go
           
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_TOKEN: ${{ secrets.GH_GO_CLIENT_REPO_PAT }}
