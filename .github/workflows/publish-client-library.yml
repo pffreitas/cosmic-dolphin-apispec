@@ -52,7 +52,7 @@ jobs:
           git branch -m master
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
-          git remote add origin https://pffreitas:${{GIT_TOKEN}}@github.com/pffreitas/cosmic-dolphin-api-go.git
+          git remote add origin https://pffreitas:${{secrets.GH_GO_CLIENT_REPO_PAT}}@github.com/pffreitas/cosmic-dolphin-api-go.git
           git push --force origin master 2>&1 | grep -v 'To https'
           
         env:
