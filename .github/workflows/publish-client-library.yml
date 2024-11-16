@@ -54,7 +54,6 @@ jobs:
           git add .
           git commit -m "${{ github.event.head_commit.message }}"
           git tag v$(date +'%Y%m%d%H%M%S')
-          git pull origin master
           git push --force origin master 2>&1 | grep -v 'To https'
           git push origin --tags
           
