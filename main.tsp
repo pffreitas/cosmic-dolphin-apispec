@@ -67,6 +67,19 @@ interface Notes {
     };
 }
 
+@route("/notes/stream")
+@tag("Notes")
+interface NotesWebSocket {
+    @useAuth(BearerAuth)
+    @get
+    websocketConnection(): void;
+}
+
+model WebSocketMessage {
+    event: string; // e.g., "note_created", "note_updated"
+    data: Note | string; // Data payload for the event
+}
+
 @route("/insert-document")
 @tag("Documents")
 interface DocumentService {

@@ -28,9 +28,9 @@ jobs:
         run: tsp compile .
 
       - name: Generate OpenAPI client library
-        run: make generate-client
+        run: make generate-all-clients
 
-      - name: Install and build
+      - name: Publish Typescript client library
         run: |
           cd bin
           npm install
@@ -39,3 +39,14 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Go client library
+        run: |
+          cd bin/go-client
+          go mod tidy
+          go build
+          /bin/sh ./git_push.sh pffreitas cosmic-dolphin-api-go
+          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
