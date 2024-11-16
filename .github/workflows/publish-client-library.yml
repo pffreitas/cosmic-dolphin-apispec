@@ -46,11 +46,14 @@ jobs:
           go mod tidy
           go build
           git config --global init.defaultBranch master
-          git branch -m master
           git config --global user.email "pfreitas1@gmail.com"
           git config --global user.name "Paulo Freitas"
-          git config pull.rebase true
-          /bin/sh ./git_push.sh pffreitas cosmic-dolphin-api-go
+          git init
+          git branch -m master
+          git add .
+          git commit -m "${{ github.event.head_commit.message }}"
+          git remote add origin https://pffreitas:${{GIT_TOKEN}}@github.com/pffreitas/cosmic-dolphin-api-go.git
+          git push --force origin master 2>&1 | grep -v 'To https'
           
         env:
           GIT_TOKEN: ${{ secrets.GH_GO_CLIENT_REPO_PAT }}
