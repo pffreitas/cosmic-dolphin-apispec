@@ -16,7 +16,7 @@ generate-go-client:
 		-g go \
 		-o ./bin/go-client \
 		--git-user-id=pffreitas \
-		--git-repo-id=cosmic-dolphin-apispec \
+		--git-repo-id=cosmic-dolphin-api-go \
 		--additional-properties=packageName=cosmicdolphinapi
 
 generate-all-clients: generate-ts-client generate-go-client
