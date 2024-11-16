@@ -45,6 +45,10 @@ jobs:
           cd bin/go-client
           go mod tidy
           go build
+          git config --global init.defaultBranch master
+          git branch -m master
+          git config --global user.email "pfreitas1@gmail.com"
+          git config --global user.name "Paulo Freitas"
           /bin/sh ./git_push.sh pffreitas cosmic-dolphin-api-go
           
         env:
