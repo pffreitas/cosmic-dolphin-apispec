@@ -1,6 +1,9 @@
 TIMESTAMP := $(shell date +%Y%m%d%H%M%S)
 NPM_VERSION := 1.0.$(TIMESTAMP)
 
+compile: 
+	tsp compile .
+
 generate-ts-client:
 	npx @openapitools/openapi-generator-cli generate \
 		-i tsp-output/@typespec/openapi3/openapi.yaml \

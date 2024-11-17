@@ -64,6 +64,7 @@ interface Notes {
     @post
     create(@body request: CreateNoteRequest): {
         @statusCode statusCode: 201;
+        @body body: Note;
     };
 }
 
