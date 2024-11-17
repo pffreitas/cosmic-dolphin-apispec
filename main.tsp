@@ -20,7 +20,7 @@ model NoteSection {
 
 enum NoteType {
     fup: "fup",
-    textReview: "textReview",
+    chatter: "chatter",
 }
 
 enum NoteSectionType {
