@@ -21,6 +21,8 @@ model NoteSection {
 enum NoteType {
     fup: "fup",
     chatter: "chatter",
+    knowledge: "knowledge",
+    task: "task",
 }
 
 enum NoteSectionType {
