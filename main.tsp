@@ -35,6 +35,7 @@ model Note {
     title: string;
     summary: string;
     tags: string;
+    type: NoteType;
     sections: NoteSection[];
     userId: string;
     createdAt: utcDateTime;
