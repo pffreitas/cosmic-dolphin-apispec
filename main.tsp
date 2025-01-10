@@ -2,7 +2,10 @@ import "@typespec/http";
 import "@typespec/rest";
 import "@typespec/openapi3";
 
+import "./pipeline.tsp";
+
 using TypeSpec.Http;
+
 @service({
     title: "Cosmic Dolphin",
 })
