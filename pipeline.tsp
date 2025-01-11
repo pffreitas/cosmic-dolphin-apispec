@@ -21,7 +21,7 @@ model PipelineStage {
     updatedAt: utcDateTime;
 }
 
-model Pipeline {
+model Pipeline extends Record<unknown> {
     id?: int64;
     refId?: int64;
     stages: PipelineStage[];
