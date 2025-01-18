@@ -34,5 +34,5 @@ model Pipeline extends Record<unknown> {
 interface Pipelines {
     @useAuth(BearerAuth)
     @get
-    findPipelinesByRefId(@path refId: int32): Pipeline[] | CosmicError;
+    findByRefId(@path refId: int32): Pipeline[] | CosmicError;
 }
