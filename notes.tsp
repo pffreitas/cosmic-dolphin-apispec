@@ -27,7 +27,7 @@ model Note {
     documentId?: int64;
     title: string;
     summary: string;
-    tags: string;
+    tags: string[];
     type: NoteType;
     sections: NoteSection[];
     userId: string;
