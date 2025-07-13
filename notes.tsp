@@ -30,10 +30,8 @@ model Note {
     body: string;
     tags: string[];
     type: NoteType;
-    sections: NoteSection[];
     userId: string;
-    createdAt: utcDateTime;
-    pipelines: Pipeline[];
+    createdAt: string;
 }
 
 model CreateNoteRequest {
