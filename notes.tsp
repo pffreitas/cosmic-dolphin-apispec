@@ -27,6 +27,7 @@ model Note {
     documentId?: int64;
     title: string;
     summary: string;
+    body: string;
     tags: string[];
     type: NoteType;
     sections: NoteSection[];
@@ -39,7 +40,6 @@ model CreateNoteRequest {
     body: string;
     type: NoteType;
 }
-
 
 @route("/notes")
 @tag("Notes")
