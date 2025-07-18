@@ -32,11 +32,23 @@ model Note {
     type: NoteType;
     userId: string;
     createdAt: string;
+    resources: Resource[];
 }
 
 model CreateNoteRequest {
     body: string;
     type: NoteType;
+}
+
+model Resource {
+    title: string;
+    icon: string;
+    source: string;
+    type: ResourceType;
+}
+
+enum ResourceType {
+    web_page: "web_page",
 }
 
 @route("/notes")
