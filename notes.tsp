@@ -41,11 +41,15 @@ model CreateNoteRequest {
 }
 
 model OpenGraph {
-    title?: string;
     type?: string;
-    image?: string;
     url?: string;
+    title?: string;
+    description?: string;
+    siteName?: string;
+    image?: string;
     imageAlt?: string;
+    imageWidth?: int32;
+    imageHeight?: int32;
     articlePublishedTime?: string;
     articleModifiedTime?: string;
 }
