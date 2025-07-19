@@ -28,11 +28,11 @@ model Note {
     title: string;
     summary: string;
     body: string;
-    tags: string[];
+    tags?: string[];
     type: NoteType;
     userId: string;
     createdAt: string;
-    resources: Resource[];
+    resources?: Resource[];
 }
 
 model CreateNoteRequest {
@@ -40,11 +40,19 @@ model CreateNoteRequest {
     type: NoteType;
 }
 
+model OpenGraph {
+    title?: string;
+    type?: string;
+    image?: string;
+    url?: string;
+    imageAlt?: string;
+    articlePublishedTime?: string;
+    articleModifiedTime?: string;
+}
+
 model Resource {
-    title: string;
-    icon: string;
-    source: string;
     type: ResourceType;
+    openGraph?: OpenGraph;
 }
 
 enum ResourceType {
