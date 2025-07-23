@@ -61,6 +61,7 @@ model Resource {
 
 enum ResourceType {
     web_page: "web_page",
+    image: "image",
 }
 
 @route("/notes")
