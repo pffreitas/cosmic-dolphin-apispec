@@ -125,4 +125,15 @@ interface Bookmarks {
         @statusCode statusCode: 500;
         @body body: BookmarkError;
     };
+
+    @doc("Get a bookmark by ID")
+    @useAuth(BearerAuth)
+    @get
+    findById(@path id: string): Bookmark | {
+        @statusCode statusCode: 404;
+        @body body: BookmarkError;
+    } | {
+        @statusCode statusCode: 500;
+        @body body: BookmarkError;
+    };
 }

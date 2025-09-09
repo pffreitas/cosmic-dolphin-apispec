@@ -8,7 +8,7 @@ import "./bookmarks.tsp";
 
 using TypeSpec.Http;
 
-@service({
+@service(#{
     title: "Cosmic Dolphin",
 })
 namespace CosmicDolphinService;
