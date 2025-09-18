@@ -39,8 +39,6 @@ model Collection {
     parentId?: string;
     userId: string;
     isPublic?: boolean;
-    createdAt: utcDateTime;
-    updatedAt: utcDateTime;
 }
 
 model Bookmark {
@@ -56,14 +54,12 @@ model Bookmark {
     tags?: string[];
     content?: string;
     summary?: string;
-    createdAt: utcDateTime;
-    updatedAt: utcDateTime;
 }
 
 model CreateBookmarkRequest {
     @doc("The source URL to bookmark")
     source_url: string;
-    
+
     @doc("Optional collection ID to add the bookmark to")
     collection_id?: string;
 }
@@ -75,13 +71,16 @@ model CreateBookmarkResponse {
 
 model GetBookmarksQuery {
     @doc("Filter bookmarks by collection ID")
-    @query collection_id?: string;
-    
+    @query
+    collection_id?: string;
+
     @doc("Maximum number of bookmarks to return")
-    @query limit?: int32 = 50;
-    
+    @query
+    limit?: int32 = 50;
+
     @doc("Number of bookmarks to skip")
-    @query offset?: int32 = 0;
+    @query
+    offset?: int32 = 0;
 }
 
 model GetBookmarksResponse {
@@ -98,25 +97,31 @@ interface Bookmarks {
     @doc("Create a new bookmark")
     @useAuth(BearerAuth)
     @post
-    create(@body request: CreateBookmarkRequest): {
-        @statusCode statusCode: 201;
-        @body body: CreateBookmarkResponse;
-    } | {
-        @statusCode statusCode: 400;
-        @body body: BookmarkError;
-    } | {
-        @statusCode statusCode: 408;
-        @body body: BookmarkError;
-    } | {
-        @statusCode statusCode: 409;
-        @body body: BookmarkError;
-    } | {
-        @statusCode statusCode: 422;
-        @body body: BookmarkError;
-    } | {
-        @statusCode statusCode: 500;
-        @body body: BookmarkError;
-    };
+    create(@body request: CreateBookmarkRequest):
+        | {
+              @statusCode statusCode: 201;
+              @body body: CreateBookmarkResponse;
+          }
+        | {
+              @statusCode statusCode: 400;
+              @body body: BookmarkError;
+          }
+        | {
+              @statusCode statusCode: 408;
+              @body body: BookmarkError;
+          }
+        | {
+              @statusCode statusCode: 409;
+              @body body: BookmarkError;
+          }
+        | {
+              @statusCode statusCode: 422;
+              @body body: BookmarkError;
+          }
+        | {
+              @statusCode statusCode: 500;
+              @body body: BookmarkError;
+          };
 
     @doc("Get user's bookmarks")
     @useAuth(BearerAuth)
