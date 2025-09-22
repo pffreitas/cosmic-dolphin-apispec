@@ -5,31 +5,6 @@ import "@typespec/openapi3";
 using TypeSpec.Http;
 namespace CosmicDolphinService;
 
-model OpenGraphMetadata {
-    title?: string;
-    description?: string;
-    image?: string;
-    url?: string;
-    siteName?: string;
-    type?: string;
-    locale?: string;
-    articleAuthor?: string;
-    articlePublishedTime?: string;
-    articleModifiedTime?: string;
-    articleSection?: string;
-    articleTag?: string[];
-}
-
-model BookmarkMetadata {
-    openGraph?: OpenGraphMetadata;
-    title?: string;
-    description?: string;
-    favicon?: string;
-    contentType?: string;
-    wordCount?: int32;
-    readingTime?: int32;
-}
-
 model Collection {
     id: string;
     name: string;
@@ -44,16 +19,48 @@ model Collection {
 model Bookmark {
     id: string;
     sourceUrl: string;
-    title?: string;
-    description?: string;
-    metadata?: BookmarkMetadata;
     collectionId?: string;
-    userId: string;
+    title?: string;
     isArchived?: boolean;
     isFavorite?: boolean;
-    tags?: string[];
-    content?: string;
-    summary?: string;
+    cosmicImages?: BookmarkImage[];
+    cosmicLinks?: BookmarkLink[];
+    cosmicSummary?: string;
+    cosmicTags?: string[];
+    metadata?: BookmarkMetadata;
+    userId: string;
+}
+
+model BookmarkImage {
+    url: string;
+    description: string;
+}
+
+model BookmarkLink {
+    url: string;
+    relevance: string;
+}
+
+model OpenGraphMetadata {
+    favicon?: string;
+    title?: string;
+    description?: string;
+    image?: string;
+    url?: string;
+    site_name?: string;
+    type?: string;
+    locale?: string;
+    article_author?: string;
+    article_published_time?: string;
+    article_modified_time?: string;
+    article_section?: string;
+    article_tag?: string[];
+}
+
+model BookmarkMetadata {
+    openGraph?: OpenGraphMetadata;
+    wordCount?: int32;
+    readingTime?: int32;
 }
 
 model CreateBookmarkRequest {
