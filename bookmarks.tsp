@@ -33,6 +33,7 @@ model Bookmark {
 
 model BookmarkImage {
     url: string;
+    title: string;
     description: string;
 }
 
