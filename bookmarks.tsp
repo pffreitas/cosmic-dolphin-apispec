@@ -95,6 +95,25 @@ model GetBookmarksResponse {
     bookmarks: Bookmark[];
 }
 
+model SearchBookmarksQuery {
+    @doc("Search query string")
+    @query
+    query: string;
+
+    @doc("Maximum number of bookmarks to return")
+    @query
+    limit?: int32 = 50;
+
+    @doc("Number of bookmarks to skip")
+    @query
+    offset?: int32 = 0;
+}
+
+model SearchBookmarksResponse {
+    bookmarks: Bookmark[];
+    total?: int32;
+}
+
 model BookmarkError {
     error: string;
 }
@@ -146,6 +165,15 @@ interface Bookmarks {
         @statusCode statusCode: 404;
         @body body: BookmarkError;
     } | {
+        @statusCode statusCode: 500;
+        @body body: BookmarkError;
+    };
+
+    @doc("Search bookmarks")
+    @useAuth(BearerAuth)
+    @get
+    @route("/search")
+    search(...SearchBookmarksQuery): SearchBookmarksResponse | {
         @statusCode statusCode: 500;
         @body body: BookmarkError;
     };
