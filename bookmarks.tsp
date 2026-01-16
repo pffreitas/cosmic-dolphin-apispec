@@ -26,6 +26,7 @@ model Bookmark {
     cosmicImages?: BookmarkImage[];
     cosmicLinks?: BookmarkLink[];
     cosmicSummary?: string;
+    cosmicBriefSummary?: string;
     cosmicTags?: string[];
     metadata?: BookmarkMetadata;
     userId: string;
